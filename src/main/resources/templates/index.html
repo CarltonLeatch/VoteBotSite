@@ -5,10 +5,24 @@
     <title>Title</title>
 </head>
 <body><table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Votes</th>
+    </tr>
+    </thead>
 <tr th:each="guilds : ${guilds}">
     <td th:text="${guilds.id}">1</td>
     <td th:text="${guilds.guildName}"></td>
-</tr>
+    <td th:each="vote : ${guilds.votes}">
+        <p th:text="${vote.title}"></p>
+    <div th:each="argument : ${vote.arguments}">
+        <p th:text="${argument.argument}"></p>
+        <p th:text="${argument.count}"></p>
+    </div>
+    </td>
+</td>
 </table>
 </body>
 </html>
