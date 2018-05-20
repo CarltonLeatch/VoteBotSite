@@ -1,28 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body><table>
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Votes</th>
-    </tr>
-    </thead>
-<tr th:each="guilds : ${guilds}">
-    <td th:text="${guilds.id}">1</td>
-    <td th:text="${guilds.guildName}"></td>
-    <td th:each="vote : ${guilds.votes}">
-        <p th:text="${vote.title}"></p>
-    <div th:each="argument : ${vote.arguments}">
-        <p th:text="${argument.argument}"></p>
-        <p th:text="${argument.count}"></p>
+<head th:include="header :: header"></head>
+<!-- Page Content -->
+<body>
+<div th:include="header :: navbar"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h1 class="mt-5">A Bootstrap 4 Starter Template</h1>
+            <p class="lead">Complete with pre-defined file paths and responsive navigation!</p>
+            <ul class="list-unstyled">
+                <li>Bootstrap 4.1.1</li>
+                <li>jQuery 3.3.1</li>
+            </ul>
+        </div>
     </div>
-    </td>
-</td>
-</table>
+</div>
 </body>
 </html>

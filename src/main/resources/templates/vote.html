@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+    <script type="text/css" src="../static/bootstrap/css/bootstrap.min.css"></script>
+</head>
+<body><table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Votes</th>
+    </tr>
+    </thead>
+<tr class="table-danger" th:each="guilds : ${guilds}">
+    <td th:each="vote : ${guilds.votes}">
+    <div th:each="argument : ${vote.arguments}">
+
+    </div>
+    </td>
+</td>
+</table>
+</body>
+</html>

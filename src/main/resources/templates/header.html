@@ -1,0 +1,38 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="header">
+    <meta charset="UTF-8">
+    <link th:href="@{css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{css/style.css}" rel="stylesheet" />
+    <script th:src="@{js/bootstrap.min.js}" ></script>
+    <script th:src="@{jquerry/jquerry.min.js}" ></script>
+
+</head>
+<body> <!-- Navigation -->
+<!--class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"-->
+        <div class="container-fluid" th:fragment="navbar">
+                <nav class="navbar navbar-default">
+                    <div class="container">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <a th:href="@{/}"><img class="logo" th:src="@{images/logo2.png}"/></a>  <a class="navbar-brand" th:href="@{/}">Vote bot</a>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">News</a></li>
+                                <li><a href="#">About</a></li>
+                                <li><a href="#">Commands</a></li>
+                                <li><a th:href="@{'/guilds'}">Latest votes</a></li>
+                                <li><a href="#">Contact</a></li>
+                                <li>
+                                    <a class="btn btn-default btn-outline btn-circle"  data-toggle="collapse" href="https://discordapp.com/oauth2/authorize?client_id=434296213601517568&scope=bot&permissions=150545" aria-expanded="false" aria-controls="nav-collapse1">INVITE</a>
+                                </li>
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </div><!-- /.container -->
+                </nav><!-- /.navbar -->
+        </div>
+</body>
+</html>

@@ -10,6 +10,7 @@ data class Guild(
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         val  id : Long? = null,
         val guildName : String? = null,
+        val guildTextName : String? = null,
         @OneToMany(cascade = arrayOf(CascadeType.ALL), fetch = FetchType.EAGER, mappedBy = "guild", orphanRemoval = true)
         @Fetch(value = FetchMode.SUBSELECT)
         val moderators : List<Moderators>?=null,

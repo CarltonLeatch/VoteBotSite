@@ -12,14 +12,17 @@ class HelloWorldController{
 @Autowired
 lateinit var guildRepository: GuildInterface
 
-//    @GetMapping
-//    fun helloWordl() : String {
-//        return "index"
-//    }
+    @GetMapping("/")
+    fun helloWordl() : String {
+        return "index"
+    }
 
-        @GetMapping("/getAll")
-        fun getAllGuilds(model : Model) : String {
-            model.addAttribute("guilds", guildRepository.findAll())
-            return "index"
-        }
+    @GetMapping("/guilds")
+    fun getAllGuilds(model: Model):String{
+        model.addAttribute("guilds", guildRepository.findAll())
+        System.out.println(guildRepository.findAll().get(1).id)
+        return "guilds"
+    }
+
+
 }
