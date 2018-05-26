@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="header :: header"></head>
+<head th:include="header :: header">
+</head>
+
 <body>
 <div th:include="header :: navbar"></div>
 <div class="container">
     <div class="row">
-        <!--<div th:text="${guilds.guildTextName}">-->
-            <!--&lt;!&ndash;<div th:text="${votes.title}"></div>&ndash;&gt;-->
-        <!--</div>-->
-
-
+        <div th:text="${guild}"></div>
     </div>
 </div>
 </body>

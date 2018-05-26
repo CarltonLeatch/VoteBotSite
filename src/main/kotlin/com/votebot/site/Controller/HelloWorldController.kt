@@ -1,7 +1,7 @@
 package com.votebot.site.Controller
 
 import org.springframework.beans.factory.annotation.Autowired
-import com.votebot.site.Repository.GuildInterface;
+import com.votebot.site.Repository.GuildRepository;
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping
 class HelloWorldController{
 
 @Autowired
-lateinit var guildRepository: GuildInterface
+lateinit var guildRepository: GuildRepository
 
     @GetMapping("/")
     fun helloWordl() : String {
@@ -20,7 +20,6 @@ lateinit var guildRepository: GuildInterface
     @GetMapping("/guilds")
     fun getAllGuilds(model: Model):String{
         model.addAttribute("guilds", guildRepository.findAll())
-        System.out.println(guildRepository.findAll().get(1).id)
         return "guilds"
     }
 
