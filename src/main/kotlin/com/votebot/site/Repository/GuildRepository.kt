@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository
 
 
 @Repository
-interface GuildRepository :CrudRepository<Guild,Long>
+interface GuildRepository :CrudRepository<Guild,Long>{
+    fun findByGuildName(guildName:String) : Guild? = null
+}
 
 

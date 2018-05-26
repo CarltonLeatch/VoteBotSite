@@ -16,9 +16,12 @@ class VoteController {
     lateinit var guildRepository: GuildRepository
 
     @GetMapping("/guild/{guildId}")
-    fun getVotes(@PathVariable guildId : Long, model : Model): String{
-
-        model.addAttribute("guild",guildRepository.findById(guildId))
+    fun getVotes(@PathVariable guildId: String, model: Model): String {
+        if (guildRepository.findByGuildName(guildId) !== null) {
+            model.addAttribute("isNull", false)
+            model.addAttribute("guild", guildRepository.findByGuildName(guildId))
+        } else
+            model.addAttribute("isNull", true)
         return "guildView"
     }
 }

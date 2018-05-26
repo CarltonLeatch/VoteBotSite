@@ -1,5 +1,6 @@
 package com.votebot.site.Controller
 
+import com.votebot.site.Model.Guild
 import org.springframework.beans.factory.annotation.Autowired
 import com.votebot.site.Repository.GuildRepository;
 import org.springframework.stereotype.Controller

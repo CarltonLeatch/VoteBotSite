@@ -5,9 +5,36 @@
 
 <body>
 <div th:include="header :: navbar"></div>
-<div class="container">
-    <div class="row">
-        <div th:text="${guild}"></div>
+<div class="container" th:switch="${isNull}">
+   <div th:case="true" class="row"> object cannot be null</div>
+    <div th:case="false" class="row" th:object="${guild}">
+        <div class="guild" th:text="*{guildName}"></div>
+        <div class="guild" th:each="vote : *{votes}">
+            <div th:text="${vote.voteEnum}"></div>
+            <table class="table table-filter">
+                <tbody>
+                <tr data-status="pagado">
+                    <td>
+                        <div class="media">
+                            <a href="#" class="pull-left">
+                                <img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+                            </a>
+                            <div class="media-body" >
+
+                                <span class="media-meta pull-right"  th:text="'Number of voters:' + ${#aggregates.sum(vote.arguments.![count])}"></span>
+
+                                <h4 class="title" th:text="${vote.title}">
+
+                                </h4>
+                                <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
     </div>
 </div>
 </body>
