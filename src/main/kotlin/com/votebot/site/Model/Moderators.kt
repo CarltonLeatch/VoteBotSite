@@ -16,4 +16,8 @@ data class Moderators(@Id
                       val username : String? =null,
                       val descriminator : String? =null,
                       val guildOwner : Boolean? =null
-                      )
+                      ){
+     override fun toString(): String {
+        return super.toString()
+    }
+}

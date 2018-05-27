@@ -13,4 +13,8 @@ data class Channel(@Id
                    val guild: Guild? = null,
                    val channelId : String? = null,
                    val type : ChannelEnum? = null
-                   )
+                   ){
+    override fun toString(): String {
+        return super.toString()
+    }
+}

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="header :: header">
+</head>
+
+<body>
+<div th:include="header :: navbar"></div>
+<div class="container" th:switch="${isNull}">
+    <div th:case="true" class="row"> object cannot be null</div>
+    <div th:case="false" class="row" th:object="${vote}">
+    <div class="guild" th:text="*{title}"></div>
+
+    </div>
+</div>
+</body>
+</html>

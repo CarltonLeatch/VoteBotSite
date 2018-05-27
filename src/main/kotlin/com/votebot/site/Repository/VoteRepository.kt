@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface VoteRepository : JpaRepository<Vote, Long>{
+    fun findVoteById(id:Long) : Vote?
 }
