@@ -9,24 +9,28 @@
    <div th:case="true" class="row"> object cannot be null</div>
     <div th:case="false" class="row" th:object="${guild}">
         <div class="guild" th:text="*{guildName}"></div>
-        <div class="guild" th:each="vote : *{votes}">
-            <div th:text="${vote.voteEnum}"></div>
+        <div class="guild" >
             <table class="table table-filter">
+                <thead>
+                <tr>
+                    <td><h4>Votes</h4></td>
+                </tr>
+                </thead>
                 <tbody>
-                <tr data-status="pagado">
+                <tr data-status="pagado" th:each="vote : *{votes}">
                     <td>
                         <div class="media">
-                            <a href="#" class="pull-left">
+                            <a class="pull-left">
                                 <img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
                             </a>
                             <div class="media-body" >
 
                                 <span class="media-meta pull-right"  th:text="'Number of voters:' + ${#aggregates.sum(vote.arguments.![count])}"></span>
 
-                                <h4 class="title" th:text="${vote.title}">
+                                <a th:href="@{'/vote/' + ${vote.id}}" ><h4 class="title" th:text="${vote.title}"></a>
 
                                 </h4>
-                                <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+                                <p class="summary">Put Owner here</p>
                             </div>
                         </div>
                     </td>

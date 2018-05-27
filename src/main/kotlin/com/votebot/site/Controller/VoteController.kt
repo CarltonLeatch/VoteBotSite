@@ -24,4 +24,10 @@ class VoteController {
             model.addAttribute("isNull", true)
         return "guildView"
     }
+
+    @GetMapping("/vote/{voteId")
+fun vote(@PathVariable voteId : Long, model : Model) :String{
+
+        return "voteView"
+    }
 }

@@ -92,9 +92,12 @@ body{
 .panel .btn-group .btn {
     transition: background-color .3s ease;
 }
+.table{
+    border-radius: 15px;
+}
 .table-filter {
     background-color: #424242;
-    border-bottom: 1px solid #424242;
+
 }
 .media-meta pull-right{
     color : #a29e9a;
