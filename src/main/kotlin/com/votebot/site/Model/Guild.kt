@@ -19,7 +19,7 @@ data class Guild(
         val channels : List<Channel>? = null,
         @OneToMany(cascade = arrayOf(CascadeType.ALL), fetch = FetchType.EAGER, mappedBy = "guild", orphanRemoval = true)
         @Fetch(value = FetchMode.SUBSELECT)
-        val votes : List<Vote>? = null
+        var votes : List<Vote>? = null
         ){
         override fun toString(): String {
                 return super.toString()

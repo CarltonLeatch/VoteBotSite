@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RestController
+import javax.swing.text.html.parser.Entity
 
 @RestController
 class VoteRestController{
@@ -19,15 +20,13 @@ class VoteRestController{
     lateinit var argumentRepository: ArgumentRepository
 
     @GetMapping("/rest/vote/{voteId}")
-    fun vote(@PathVariable voteId : Long) : List<String>? {
+    fun vote(@PathVariable voteId : Long) : Map<String, List<Argument>>? {
        val argument = argumentRepository.findArgumentByVoteId(voteId)
-        val arguments : MutableList<String>? = ArrayList<String>()
-        if (argument != null) {
-            argument.forEach { argument ->
-                if (arguments != null) {
-                    arguments.add(argument.argument!!)
+        val arguments : MutableMap<String, List<Argument>>? = HashMap<String,List<Argument>>()
 
-                }
+        if (arguments != null) {
+            if (argument != null) {
+                arguments.put("VoteArguments", argument)
             }
         }
 

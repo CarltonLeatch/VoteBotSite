@@ -20,8 +20,12 @@
                 <tr data-status="pagado" th:each="vote : *{votes}">
                     <td>
                         <div class="media">
-                            <a class="pull-left">
-                                <img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+                            <a class="pull-left" >
+                                <th:block th:switch="${vote.voteEnum.toString()}">
+                                <img th:case="'CREATED'" th:src="@{~/images/SLetter.png}" class="media-photo" />
+                                <img th:case="'STARTED'" th:src="@{~/images/CLetter.png}" class="media-photo" />
+                                <img th:case="'FINISHED'" th:src="@{~/images/FLetter.png}" class="media-photo"/>
+                                </th:block>
                             </a>
                             <div class="media-body" >
 

@@ -8,7 +8,120 @@
 <div class="container" th:switch="${isNull}">
     <div th:case="true" class="row"> object cannot be null</div>
     <div th:case="false" class="row" th:object="${vote}">
-    <div class="guild" th:text="*{title}"></div>
+        <div class="guild" th:text="*{title}"></div>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+        <script th:inline="javascript">
+            var i = 0;
+            var dataOld;
+            function addData(chart, labels, data){
+
+                chart.data.labels = labels;
+                var xd = [{
+                    backgroundColor: [
+                        "#2ecc71",
+                        "#3498db",
+                        "#95a5a6",
+                        "#9b59b6",
+                        "#9c740f",
+                        "#993329",
+                        "#34495e"],
+                    data: []
+                }];
+
+                    console.log(chart.data.datasets[0].data = data);
+
+              chart.options.responsive = "true";
+              chart.update();
+
+            }
+
+            /*<![CDATA[*/
+
+                jQuery(document).ready(function () {
+                    var ctx = document.getElementById("myChart");
+                    ctx.height = 200;
+                    var myChart = new Chart(ctx,{
+                        type:'pie',
+                        options :{
+                            responsive: true
+                        }
+                        ,data: {
+                            labels: [],
+                            datasets: [{
+                                backgroundColor: [
+                                    "#e6194b",
+                                    "#3cb44b",
+                                    "#ffe119",
+                                    "#0082c8",
+                                    "#46f0f0",
+                                    "#000080",
+                                    "#808000",
+                                    "#fabebe",
+                                    "#aa6e28"
+                                ],
+                                data: []
+                            }]
+                        }
+                    });
+                        sendRequest(myChart);
+
+                    setInterval(function () {
+                        var id = /*[[${vote.id}]]*/ 'User Name';
+                        var count = [];
+                        var values = [];
+                        $.ajax("http://localhost:8081/rest/vote/" + id, {
+                                method: 'GET',
+                                success: function (data) {
+                                    data.VoteArguments.forEach(function (arg) {
+                                        count.push(arg.count);
+                                        values.push(arg.argument);
+                                    });
+                                    if(dataOld !== values){
+                                    addData(myChart, values, count);
+                                    dataOld = values;
+                                }
+
+                                },
+                                error: function () {
+                                    console.log("Cannot fetch information from server");
+                                }
+                            }
+                        )
+
+                    }, 3000);
+                });
+
+
+function sendRequest(myChart){
+    var id = /*[[${vote.id}]]*/ 'User Name';
+    var count = [];
+    var values = [];
+    /*]]>*/
+    $.ajax("http://localhost:8081/rest/vote/" + id, {
+            method: 'GET',
+            success: function (data) {
+                data.VoteArguments.forEach(function (arg) {
+                    count.push(arg.count);
+                    values.push(arg.argument);
+                });
+
+                    addData(myChart, values, count);
+
+
+
+            },
+            error: function () {
+                console.log("Cannot fetch information from server");
+            }
+        }
+    )
+
+}
+
+
+    </script>
+        <canvas id="myChart" ></canvas>
 
     </div>
 </div>

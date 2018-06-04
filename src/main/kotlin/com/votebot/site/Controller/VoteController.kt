@@ -1,6 +1,7 @@
 package com.votebot.site.Controller
 
 import com.votebot.site.Model.Guild
+import com.votebot.site.Model.Vote
 import com.votebot.site.Repository.GuildRepository
 import com.votebot.site.Repository.VoteRepository
 import org.springframework.beans.factory.annotation.Autowired
@@ -21,8 +22,10 @@ class VoteController {
     @GetMapping("/guild/{guildId}")
     fun getVotes(@PathVariable guildId: String, model: Model): String {
         if (guildRepository.findByGuildName(guildId) !== null) {
+            var guild : Guild = guildRepository.findByGuildName(guildId)!!
+          guild.votes = guild.votes!!.sortedWith(compareBy(Vote::voteEnum))
             model.addAttribute("isNull", false)
-            model.addAttribute("guild", guildRepository.findByGuildName(guildId))
+            model.addAttribute("guild", guild)
         } else
             model.addAttribute("isNull", true)
         return "guildView"
